@@ -1,0 +1,17 @@
+[
+  {
+    "id": "1",
+    "nombre": "Banner Globos1",
+    "imagen": "img/banner1.png"
+  },
+  {
+    "id": "2",
+    "nombre": "Banner Globos2",
+    "imagen": "img/banner2.png"
+  },
+  {
+    "id": "3",
+    "nombre": "Banner Globos3",
+    "imagen": "img/banner3.png"
+  }
+]
