@@ -275,3 +275,185 @@ h5,
     font-size: 0.8rem;
   }
 }
+
+/* CARRITO */
+.section-listado-carrito {
+  display: flex;
+  justify-content: center;
+}
+.container-listado-carrito {
+  display: flex;
+  flex-direction: column;
+  padding-top: 2rem;
+}
+
+.card-listado-carrito {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.card-listado-carrito img {
+  width: 100px;
+}
+
+.card-listado-carrito h3 {
+  font-size: 1.2rem;
+}
+
+.div-btn-carrito {
+  align-items: center;
+  padding-left: 1.5rem;
+  justify-content: space-between;
+}
+.container-listado-carrito p {
+  margin: 0;
+}
+
+.total-carrito {
+  display: flex;
+  justify-content: end;
+}
+.total-carrito h5 {
+  text-transform: none;
+}
+.btn-finalizar {
+  background-color: var(--color-principal);
+  color: white;
+  width: fit-content;
+  padding: 0.5rem 1rem;
+  margin: 1rem auto;
+}
+
+.btn-finalizar:hover {
+  background-color: var(--color-secundario);
+  color: white;
+}
+
+/* LOGIN */
+
+.form-login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-block: 2rem;
+}
+
+.form-login input[type="submit"] {
+  margin-top: 1rem;
+  background-color: var(--color-principal);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding-inline: 1rem;
+}
+
+.form-login input[type="submit"]:hover {
+  background-color: var(--color-secundario);
+}
+
+.form-login label {
+  font-size: 1.2rem;
+}
+
+.form-login input {
+  border-radius: 10px;
+  border: 1px solid grey;
+  padding: 5px 10px;
+}
+
+.form-login button,
+.btn-volver {
+  margin-top: 1rem;
+  background-color: rgb(85, 85, 85);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 5px 1rem;
+}
+
+.form-login button:hover,
+.btn-volver:hover {
+  background-color: rgb(145, 145, 145);
+}
+
+.form-login a {
+  text-decoration: none;
+  color: white;
+}
+
+.btn-registrarse {
+  background-color: var(--color-principal) !important;
+}
+.btn-registrarse:hover {
+  background-color: var(--color-secundario) !important;
+}
+
+/* VISTA ADMINISTRADOR */
+.agregarUsuario {
+  display: flex;
+  justify-content: center;
+  margin-block: 1rem;
+}
+
+.agregarUsuario button {
+  margin-top: 1rem;
+  background-color: rgb(86, 4, 218);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 1rem;
+}
+.agregarUsuario button:hover {
+  background-color: rgb(138, 69, 248);
+}
+
+.table-editar-usuarios {
+  margin-inline: auto;
+  margin-bottom: 4rem !important;
+}
+
+.table-editar-usuarios th,
+.table-editar-usuarios td {
+  border: 1px solid black;
+  padding: 0.5rem;
+}
+.table-editar-usuarios thead tr {
+  background-color: #272727 !important;
+  color: white;
+}
+.table-editar-usuarios tr:nth-child(even) {
+  background-color: #fcf8f8;
+}
+.table-editar-usuarios tr:nth-child(odd) {
+  background-color: #dbc4f8;
+}
+
+.table-editar-usuarios button,
+#guardarUsuario,
+#salir,
+#salir2,
+.btn-guardar {
+  background-color: var(--color-principal);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 0.2rem 0.5rem;
+}
+
+.table-editar-usuarios button:hover,
+#guardarUsuario:hover,
+#salir:hover,
+#salir2:hover,
+.btn-guardar:hover {
+  background-color: var(--color-secundario);
+}
+
+#formularioEditar input,
+#formularioAgregar input {
+  margin-bottom: 1rem;
+}
+
+.logo-carrito {
+  width: 30px;
+}

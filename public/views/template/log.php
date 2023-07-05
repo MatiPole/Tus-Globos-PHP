@@ -4,7 +4,13 @@
     $email = $_GET['email'];
     $direccion = $_GET['direccion'];
     $mensaje = $_GET['mensaje'];
-
+    session_start();
+    require_once "../../../resources/controllers/Carrito.php";
+    if (!isset($_SESSION['user'])) {
+    // Redirigir al usuario de vuelta al index.php
+    header("Location: ../../../index.php");
+    exit; // Asegurarse de que el código después de la redirección no se ejecute
+}
 ?>
 
 <!DOCTYPE html>

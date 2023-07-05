@@ -4,6 +4,13 @@
 
 <?php
     include "../parts/head.php";
+        session_start();
+        require_once "../../../resources/controllers/Carrito.php";
+        if (!isset($_SESSION['user'])) {
+    // Redirigir al usuario de vuelta al index.php
+    header("Location: ../../../index.php");
+    exit; // Asegurarse de que el código después de la redirección no se ejecute
+}
 ?>
 
 <body>

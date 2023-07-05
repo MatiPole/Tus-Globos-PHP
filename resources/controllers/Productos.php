@@ -1,38 +1,42 @@
 <?php 
+require_once 'Conexion.php';
 
 class Productos {
    public $id ;
-   public $color;
+   public $nombre;
    public $tipo;
    public $imagen;
    public $descripcion;
    public $precio;
-   public $unidadesPorBolsa;
+   public $unidadesporbolsa;
+   public $categoria;
+   public $stock;
   //metodos para hacer cosas con los objetos
 
-  //Esta funcion va a traer la informacion de mis viajes para utilizarlo en mi HTML
-    public function traer_info_de_viaje (){
-        echo 'Este es el viaje a '.$this->color.' que estabas esperando. Tiene una descripción de '.$this->descripcion.' y es muy '.$this->etiquetas.'. El valor es de: '.$this->precio;
-    }
 
     //mostrar todos los productos del catalogo
 
     public function traer_catalogo():array{
-        //se trae los datos, en este caso desde un JSON
-        $json = file_get_contents($_SERVER['DOCUMENT_ROOT']. '/tus-globos/resources/data/productos.json'); //va a buscar al archivo
-        $jsonData = json_decode($json); //lo trasnforma
-        $catalogo = []; // Dejamos preparada la variable para que guarde el dato
+      $conexion = new Conexion(); // Crear una instancia de la clase Conexion
+      $db = $conexion->getConexion(); // Obtener el objeto PDO desde la instancia de Conexion
 
-        foreach ($jsonData as $value) { // recorremos el JSON
+      $query = "SELECT * FROM productos"; // Modifica la consulta según la estructura de tu tabla
+      $stmt = $db->prepare($query); // Utilizar una consulta preparada
+      $stmt->execute(); // Ejecutar la consulta
+
+      $catalogo = [];
+   while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){ 
           $productos = new self();
-          $productos->id = $value->id;
-          $productos->color = $value->color;
-          $productos->tipo = $value->tipo;
-          $productos->precio = $value->precio;
-          $productos->descripcion = $value->descripcion;
-          $productos->unidadesPorBolsa = $value->unidadesPorBolsa;
-          $productos->imagen = $value->imagen;
-          $catalogo[] = $productos;
+          $productos->id = $row['id'];
+          $productos->nombre = $row['nombre'];
+          $productos->tipo = $row['tipo'];
+          $productos->precio = $row['precio'];
+          $productos->descripcion = $row['descripcion'];
+          $productos->unidadesporbolsa = $row['unidadesporbolsa'];
+          $productos->imagen = $row['imagen'];
+          $productos->categoria = $row['categoria'];
+          $productos->stock = $row['stock'];
+                    $catalogo[] = $productos;
         }
 
         return $catalogo;
@@ -41,21 +45,27 @@ class Productos {
     //filtrar productos por precio mas baratos
     
      public function traer_ofertas(){
-       $json = file_get_contents($_SERVER['DOCUMENT_ROOT']. '/tus-globos/resources/data/productos.json');
-        $jsonData = json_decode($json);             
+      $conexion = new Conexion();
+      $db = $conexion->getConexion();
 
-        foreach ($jsonData as $value){     
-                   if($value->precio <= 700){
-                     $oferta = new self();
-                     $oferta->id = $value->id;
-                     $oferta->color = $value->color;
-                     $oferta->tipo = $value->tipo;
-                     $oferta->precio = $value->precio;
-                     $oferta->descripcion = $value->descripcion;
-                     $oferta->unidadesPorBolsa = $value->unidadesPorBolsa;
-                     $oferta->imagen = $value->imagen;
+      $query = "SELECT * FROM productos WHERE precio < 600"; // Modifica la consulta si es necesario
+      $stmt = $db->prepare($query); // Utilizar una consulta preparada
+      $stmt->execute(); // Ejecutar la consulta
+
+      $ofertas = [];
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {     
+          $oferta = new self();
+          $oferta->id = $row['id'];
+          $oferta->nombre = $row['nombre'];
+          $oferta->tipo = $row['tipo'];
+          $oferta->precio = $row['precio'];
+          $oferta->descripcion = $row['descripcion'];
+          $oferta->unidadesporbolsa = $row['unidadesporbolsa'];
+          $oferta->imagen = $row['imagen'];
+          $oferta->categoria = $row['categoria'];
+          $oferta->stock = $row['stock'];
                     $ofertas[] = $oferta;     
-                   }                   
+                                      
         }
          return $ofertas;
     
@@ -104,6 +114,8 @@ public function traer_nombre_tipo(){
         return $resultado;
     
      }
+
+
 }
 
 

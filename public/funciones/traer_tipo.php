@@ -10,14 +10,14 @@ if (isset($_POST['tipo'])) {
       } else {
         foreach ($resultado as $r) {
             echo '<div class="card" style="width: 20rem;">
-  <img class="card-img-top" src="../../views/assets/'.$r->imagen.'" alt="Globo color '.$r->color.'">
+  <img class="card-img-top" src="../../views/assets/img/'.$r->imagen.'.png" alt="Globo color '.$r->nombre.'">
   <div class="card-body">
-    <h3 class="card-title">'.$r->color.'</h3>
+    <h3 class="card-title">'.$r->nombre.'</h3>
         <h5>'.$r->tipo.'</h5>
-    <p class="card-text">Bolsa por '.$r->unidadesPorBolsa.' unidades</p>
+    <p class="card-text">Bolsa por '.$r->unidadesporbolsa.'</p>
         <p class="card-text precio-card">$ '.$r->precio.'</p>    </div>
         <div class="div-btn-card">
-    <a href="#" class="btn ">Agregar al carrito</a><a data-id="'.$r->id.'" href="detalleproducto.php?id='.$r->id.'" class="btn ">Ver Más</a>
+      <a  class="btn" onclick="agregarACarrito('.$r->id.')">Agregar al carrito</a><a  href="detalleproducto.php?id='.$r->id.'" class="btn ">Ver Más</a>
     </div>
         </div>';
   
