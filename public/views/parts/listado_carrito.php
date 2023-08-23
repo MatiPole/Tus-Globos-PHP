@@ -25,20 +25,28 @@
         <?php
     }
     ?>
-    <div class="total-carrito">
+    <?php if ($totalCarrito > 0) { ?>
+            <div class="total-carrito">
         <h5>El total es de: $<?php echo $totalCarrito ?></h5>
     </div>
-    <?php if ($totalCarrito > 0) { ?>
+        <div class="container-btn-comprar">
         <a class="btn btn-finalizar" href="finalizarCompra.php">Comprar</a>
+         <button class="btn btn-finalizar" id="vaciarCarro" onclick="vaciarCarro(<?php echo $_SESSION['user']['id']?>)">Vaciar Carrito</button></div>
     <?php } else { ?>
-        <button class="btn btn-finalizar" id="btn-vaciar-carrito">Comprar</button>
+                    <div class="total-carrito">
+        <h5>EL CARRITO ESTÁ VACÍO</h5>
+    </div>
+        <button class="btn btn-finalizar" id="btnCarritoVacio">Comprar</button>
     <?php } ?>
 </div>
 
 <script>
     $(document).ready(function() {
-        $('#btn-vaciar-carrito').click(function() {
-            alert('El carrito está vacío');
+        $('#btnCarritoVacio').click(function() {
+           swal("El carrito esta vacío", "Debe agregar algún producto para realizar la compra", "error")
         });
     });
+
+
+
 </script>

@@ -75,14 +75,14 @@ class Productos {
 
 //traer tipo
      public function traer_tipo($tipo){
-        $resultado = [];
+        $resultadofiltro = [];
         $catalogo = $this->traer_catalogo();
         foreach ($catalogo as $d) {
            if($d->tipo == $tipo){
-                $resultado[] = $d;
+                $resultadofiltro[] = $d;
            }
         }       
-        return $resultado;
+        return $resultadofiltro;
     
      }
 

@@ -23,7 +23,7 @@ include "public/views/parts/head.php";
 <header>
         <nav class="navbar navbar-expand-lg bg-light p-0">
             <div class="container-fluid">
-                <a class="navbar-brand p-0" href="index.php>">
+                <a class="navbar-brand p-0" >
                     <img src="public/views/assets/img/logo-tus-globos.svg" alt="alt-logo" class="d-inline-block align-text-center logo-nav"">             
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">

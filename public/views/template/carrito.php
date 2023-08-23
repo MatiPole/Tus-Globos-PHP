@@ -81,6 +81,24 @@ function agregarACarrito(producto_id, user_id) {
             }
         });
     }
+
+
+     function vaciarCarro(user_id) {
+        $.ajax({
+            type: "POST",
+            url: "../../funciones/vaciar_carrito.php",
+            data: {
+                userId: user_id,
+            },
+            success: function(result) {
+                       location.reload();
+                console.error('restado');
+            },
+            error: function(xhr, status, error) {
+                console.error(error);
+            }
+        });
+    }
 </script>
 </html>
 

@@ -58,6 +58,7 @@ $miCarrito = new Carrito;
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
 
 <script>
+
 function agregarACarrito(producto_id, user_id) {
   $.ajax({
     type: "POST",
@@ -70,7 +71,19 @@ function agregarACarrito(producto_id, user_id) {
       // Actualizar el catálogo después de agregar al carrito
       console.log("success");
       console.log(result);
-      location.reload();
+
+      swal({
+        title: "Agregado al carrito!",
+        text: null,
+        icon: "success",
+        button: null,
+      });
+
+      // Cerrar el SweetAlert después de 1 segundo
+      setTimeout(function () {
+        swal.close();
+        location.reload();
+      }, 1000);
     },
     error: function (xhr, status, error) {
       console.log("error");
@@ -78,6 +91,7 @@ function agregarACarrito(producto_id, user_id) {
     },
   });
 }
+
 
 </script>
 

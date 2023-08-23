@@ -12,31 +12,23 @@ function agregarACarrito(producto_id, user_id) {
       // Actualizar el catálogo después de agregar al carrito
       console.log("success");
       console.log(result);
-      location.reload();
+
+      swal({
+        title: "Agregado al carrito!",
+        text: null,
+        icon: "success",
+        button: null,
+      });
+
+      // Cerrar el SweetAlert después de 1 segundo
+      setTimeout(function () {
+        swal.close();
+        location.reload();
+      }, 1000);
     },
     error: function (xhr, status, error) {
       console.log("error");
       console.error(error);
     },
   });
-}
-
-function filtrarTipo(valueTipo) {
-  let tipo = valueTipo;
-  console.log(tipo);
-  $.ajax({
-    type: "POST",
-    url: "../../funciones/traer_tipo.php",
-    data: {
-      tipo: tipo,
-    },
-    success: function (result) {
-      $("#resultado").html(result);
-    },
-    error: function (xhr, status, error) {
-      console.error(error);
-    },
-  });
-
-  return false;
 }

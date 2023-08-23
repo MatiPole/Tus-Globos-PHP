@@ -36,14 +36,15 @@ if (!isset($_SESSION['user'])) {
     <section class="container mt-4">
         <div class="row ">
             <div class="col d-flex justify-content-center div-btn-filtros"> 
-                    <a class="btn btn-filtros" href="./catalogo.php" role="button">Todos</a>
+                    <a class=" btn-filtros" data-id="todos" href="./catalogo.php" role="button">Todos</a>
+                    
                     <?php foreach ($tipo as $tipos) { ?>
-                    <button class="btn-filtros"  onclick="event.preventDefault(); filtrarTipo(this.id)" id="<?= $tipos ?>" value=<?= $tipos ?>><?= $tipos ?></button>
+                 <a class=" btn-filtros" data-id="<?php echo $tipos ?>" href="catalogo.php?tipo=<?= $tipos ?>"><?= $tipos ?></a>
                     <?php }?>
             </div>
         </div>
     </section>
-
+ 
 <?php
     include "../parts/producto_catalogo.php";
     ?>
@@ -57,7 +58,36 @@ if (!isset($_SESSION['user'])) {
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
 <script src="../assets/js/main.js"></script>
+<script>$(document).ready(function() {
+    var lastClickedButton = sessionStorage.getItem('lastClickedButton');
 
+    if (lastClickedButton) {
+        $(".btn-filtros[data-id='" + lastClickedButton + "']").addClass("btn-subrayado");
+    }
+
+    $(".btn-filtros").click(function() {
+        var buttonId = $(this).data("id");
+        
+        // Guardar el último botón clicado en sessionStorage
+        sessionStorage.setItem('lastClickedButton', buttonId);
+
+        // Remover clase de subrayado de todos los botones
+        $(".btn-filtros").removeClass("btn-subrayado");
+
+        // Agregar clase de subrayado al botón clicado
+        $(this).addClass("btn-subrayado");
+    });
+});
+</script>
+
+<style>
+/* Clase para aplicar subrayado */
+.btn-subrayado {
+    background-color: grey !important;
+    padding-inline: 0.5rem;
+    color:white;
+}
+</style></script>
 </html>
 
 

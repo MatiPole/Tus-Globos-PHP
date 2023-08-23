@@ -24,10 +24,6 @@ class User{
     }
 
 
-/*     public function getNombre(){
-        return $this->nombre;
-    }
- */
 }
 
 

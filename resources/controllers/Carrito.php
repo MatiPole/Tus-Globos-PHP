@@ -166,6 +166,41 @@ public function calcularCantidadCarrito($userId) {
 
     return $total;
 }
+//VACIAR CARRITO
+
+public function vaciarCarrito($userId) {
+    $conexion = new Conexion();
+    $db = $conexion->getConexion();
+
+    $query = "DELETE FROM carrito WHERE usuario_id = :usuario_id";
+    $stmt = $db->prepare($query);
+    $stmt->bindParam(':usuario_id', $userId);
+    $stmt->execute();
+
+    return true;
+}
+public function actualizarStockProductos($userId) {
+    $conexion = new Conexion();
+    $db = $conexion->getConexion();
+
+    $query = "SELECT producto_id, cantidad FROM carrito WHERE usuario_id = :usuario_id";
+    $stmt = $db->prepare($query);
+    $stmt->bindParam(':usuario_id', $userId);
+    $stmt->execute();
+
+    $carritoItems = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    foreach ($carritoItems as $item) {
+        $updateQuery = "UPDATE productos SET stock = stock + :cantidad WHERE id = :producto_id";
+        $updateStmt = $db->prepare($updateQuery);
+        $updateStmt->bindParam(':cantidad', $item['cantidad']);
+        $updateStmt->bindParam(':producto_id', $item['producto_id']);
+        $updateStmt->execute();
+    }
+
+    return true;
+}
+
 
 }
 

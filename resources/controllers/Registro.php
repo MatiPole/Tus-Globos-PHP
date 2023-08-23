@@ -16,7 +16,7 @@ public function agregarUsuario($nameRegistro, $emailRegistro, $passwordRegistro)
       $db = $conexion->getConexion();
 
         // Preparar la consulta INSERT
-        $query = "INSERT INTO usuarios (nombre, email, password) VALUES (:nombre, :email, :password)";
+        $query = "INSERT INTO usuarios (nombre, email, password, nivel) VALUES (:nombre, :email, :password, 1)";
 
         // Preparar la sentencia
         $stmt = $db->prepare($query);

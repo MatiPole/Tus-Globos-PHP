@@ -7,6 +7,7 @@ if (isset($_POST['productoId']) && isset($_POST['userId'])) {
     $miCarrito->agregarAlCarrito($productoId, $userId);
        // La inserción se realizó correctamente
    echo "Producto guardado correctamente";
+
 }
 else {
    // Ocurrió un error durante la inserción
